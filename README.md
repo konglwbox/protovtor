@@ -1,6 +1,7 @@
 # Protovtor is a Python data conversion and validation library
 
-[![Build Status](https://travis-ci.org/konglwbox/protovtor.png)](https://travis-ci.org/konglwbox/protovtor)
+[![Build Status](https://travis-ci.org/konglwbox/protovtor.svg?branch=master)](https://travis-ci.org/konglwbox/protovtor?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/konglwbox/protovtor/badge.svg?branch=master)](https://coveralls.io/github/konglwbox/protovtor?branch=master)
 
 Protovtor is a simple and flexible data conversion and validation library for Python. It is designed for converting and
 validating data coming into Python such as JSON/YAML(or something else), and convert them to Python data-types.
@@ -9,6 +10,12 @@ Goals:
 1. Simple to use.
 2. Support complex data.
 3. Provide useful error messages.
+
+# Installation
+Use pip or easy_install:  
+`pip install protovtor`
+
+Tested with Python 2.7, 3.3, 3.4, 3.5, 3.6.
 
 # Quick start
 ```python
