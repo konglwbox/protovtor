@@ -9,8 +9,7 @@ class TestProtocol(unittest.TestCase):
         class Proto(Protocol):
             field_name = StringField()
 
-            @staticmethod
-            def post_data(data):
+            def post_data(self, data):
                 return None
 
         p = Proto(dict(name="konglw"))

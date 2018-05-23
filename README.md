@@ -88,8 +88,7 @@ class OSProto(AppProto):
         validators=[validators.DataRequired()]
     )
 
-    @staticmethod
-    def post_validate(fields):
+    def post_validate(self, fields):
         """
         Overwrite super class's method. This method will be called before the method 'validate' returned.
 
@@ -144,8 +143,7 @@ class ProductProto(Protocol):
     field_buy_date = DateTimeField(format="%Y-%m-%d %H:%M:%S")
     field_doc = LengthLimitTextField(limit=10)
 
-    @staticmethod
-    def post_data(data):
+    def post_data(self, data):
         """
         Overwrite super class's method. This method will be called before the method 'data' returned.
 
