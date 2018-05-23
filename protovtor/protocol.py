@@ -93,8 +93,7 @@ class Protocol(object):
                 self._error_fields[name] = field
                 break
 
-    @staticmethod
-    def post_data(data):
+    def post_data(self, data):
         """
         You can overwrite this method in order to do something you like with the result data. The method will be
         called before the 'data' method return. You can do everything safely with 'data' here, because the 'data'
@@ -138,8 +137,7 @@ class Protocol(object):
 
         return True
 
-    @staticmethod
-    def post_validate(fields):
+    def post_validate(self, fields):
         """
         You can overwrite this method in order to have a custom validation with the fields. The method will be
         called before the 'validate' method return.
