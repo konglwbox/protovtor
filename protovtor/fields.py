@@ -423,13 +423,13 @@ class UniqueFieldList(FieldList):
     def process(self, value):
         if isinstance(value, (tuple, list)):
             try:
-                value = set(value)
+                d = {x: True for x in value}
 
             except TypeError:
                 self.error = "Not a valid one-dimensional list value"
                 return False
 
-        return super(UniqueFieldList, self).process(value)
+        return super(UniqueFieldList, self).process(tuple(d.keys()))
 
 
 class ProtocolField(Field):

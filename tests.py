@@ -20,82 +20,81 @@ class TestProtocol(unittest.TestCase):
 class TestField(unittest.TestCase):
     def test_StringField(self):
         f = StringField()
-        f.process(" test ")
 
+        self.assertTrue(f.process(" test "))
         self.assertTrue(f.validate())
         self.assertTrue(" " not in f.value)
 
     def test_TextField(self):
         f = TextField()
-        f.process("test\r\n")
 
+        self.assertTrue(f.process("test\r\n"))
         self.assertTrue(f.validate())
         self.assertTrue("\r\n" not in f.value)
 
     def test_LengthLimitTextField(self):
         f = LengthLimitTextField(limit=1)
-        f.process("test")
 
+        self.assertTrue(f.process("test"))
         self.assertTrue(f.validate())
         self.assertTrue(len(f.value) == 1)
 
     def test_IntegerField(self):
         f = IntegerField()
-        f.process("1")
 
+        self.assertTrue(f.process("1"))
         self.assertTrue(f.validate())
         self.assertTrue(f.value == 1)
 
     def test_FloatField(self):
         f = FloatField()
-        f.process("1.1")
 
+        self.assertTrue(f.process("1.1"))
         self.assertTrue(f.validate())
         self.assertTrue(f.value == 1.1)
 
     def test_BooleanField(self):
         f = BooleanField()
-        f.process("test")
 
+        self.assertTrue(f.process("test"))
         self.assertTrue(f.validate())
         self.assertTrue(f.value)
 
     def test_DateTimeField(self):
         f = DateTimeField()
-        f.process("2018-05-21 13:47:13")
 
+        self.assertTrue(f.process("2018-05-21 13:47:13"))
         self.assertTrue(f.validate())
         self.assertTrue(f.value)
 
     def test_PlaceField(self):
         f = PlaceField(handler=lambda x: int(x))
-        f.process("1")
 
+        self.assertTrue(f.process("1"))
         self.assertTrue(f.validate())
         self.assertTrue(f.value == 1)
 
     def test_FieldList(self):
         f = FieldList(IntegerField())
-        f.process(["1"])
 
+        self.assertTrue(f.process(["1", "2", "3"]))
         self.assertTrue(f.validate())
-        self.assertTrue(f.value[0] == 1)
+        self.assertTrue(f.value == [1, 2, 3])
 
     def test_UniqueFieldList(self):
         f = UniqueFieldList(IntegerField())
-        f.process(["1", "1"])
 
+        self.assertTrue(f.process(["1", "1", "2", "3"]))
         self.assertTrue(f.validate())
-        self.assertTrue(f.value[0] == 1)
-        self.assertTrue(len(f.value) == 1)
+        self.assertTrue(f.value == [1, 2, 3])
 
     def test_ProtocolField(self):
         class Proto(Protocol):
             field_name = StringField()
 
         f = ProtocolField(Proto)
-        f.process(dict(name="test"))
 
+        self.assertTrue(f.process(dict(name="test")))
         self.assertTrue(f.validate())
         self.assertTrue(f.value)
 
