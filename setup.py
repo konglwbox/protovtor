@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="protovtor",
-    version="1.0.1",
+    version="1.0.2",
     url="https://github.com/konglwbox/protovtor",
     keywords=["protovtor", "json", "conversion", "validation"],
     description="Simple data conversion and validation library",

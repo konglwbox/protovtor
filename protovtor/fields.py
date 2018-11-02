@@ -421,13 +421,17 @@ class UniqueFieldList(FieldList):
     """
 
     def process(self, value):
-        if isinstance(value, (tuple, list)):
-            try:
-                d = {x: True for x in value}
+        if not isinstance(value, (tuple, list)):
+            self.error = "Not a valid list value"
+            return False
 
-            except TypeError:
-                self.error = "Not a valid one-dimensional list value"
-                return False
+        try:
+            # Keep the sequence.
+            d = {x: True for x in value}
+
+        except TypeError:
+            self.error = "Not a valid one-dimensional list value"
+            return False
 
         return super(UniqueFieldList, self).process(tuple(d.keys()))
 

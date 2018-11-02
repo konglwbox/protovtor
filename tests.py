@@ -88,6 +88,8 @@ class TestField(unittest.TestCase):
         self.assertTrue(f.validate())
         self.assertTrue(f.value == [1, 2, 3])
 
+        self.assertFalse(f.process(1))
+
     def test_ProtocolField(self):
         class Proto(Protocol):
             field_name = StringField()

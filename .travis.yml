@@ -1,18 +1,19 @@
 language: python
 
 python:
-- "2.7"
-- "3.3"
-- "3.4"
-- "3.5"
-- "3.6"
+  - "2.7"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+  - "3.7"
 
 install:
-- pip install coveralls
-- pip install coverage
-- pip install nose
+  - pip install coveralls
+  - pip install coverage
+  - pip install nose
 
 script: nosetests --with-coverage --cover-package=protovtor
 
 after_success:
-- coveralls
+  - coveralls
