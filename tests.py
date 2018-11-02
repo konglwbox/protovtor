@@ -154,3 +154,7 @@ class TestValidator(unittest.TestCase):
         with self.assertRaises(ValueError):
             v = DataRequired()
             v.validate(0)
+
+
+if __name__ == "__main__":
+    unittest.main()

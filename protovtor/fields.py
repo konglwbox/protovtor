@@ -1,4 +1,5 @@
 # coding: utf-8
+from collections import OrderedDict
 from datetime import datetime
 import copy
 
@@ -425,9 +426,11 @@ class UniqueFieldList(FieldList):
             self.error = "Not a valid list value"
             return False
 
+        # Keep the sequence.
+        d = OrderedDict()
         try:
-            # Keep the sequence.
-            d = {x: True for x in value}
+            for x in value:
+                d[x] = True
 
         except TypeError:
             self.error = "Not a valid one-dimensional list value"
